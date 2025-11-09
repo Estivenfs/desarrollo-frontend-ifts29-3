@@ -770,3 +770,33 @@
     gap: 0.75rem;
   }
 }
+
+/* Activación alternativa: cuando la tarjeta es visible en móviles */
+@media (max-width: 768px) {
+  .team-card.visible .skill-progress {
+    width: var(--skill-level, 70%) !important;
+  }
+  .team-card.visible .skill-name {
+    color: #667eea;
+    transform: translateX(5px);
+  }
+  .team-card.visible .skill-percentage {
+    color: #4c63d2;
+    transform: scale(1.1);
+  }
+  .team-card.visible .skill-item:nth-child(1) .skill-progress { transition-delay: 0.1s; }
+  .team-card.visible .skill-item:nth-child(2) .skill-progress { transition-delay: 0.2s; }
+  .team-card.visible .skill-item:nth-child(3) .skill-progress { transition-delay: 0.3s; }
+  .team-card.visible .skill-item:nth-child(4) .skill-progress { transition-delay: 0.4s; }
+  .team-card.visible .skill-item:nth-child(5) .skill-progress { transition-delay: 0.5s; }
+  .team-card.visible .skill-item:nth-child(6) .skill-progress { transition-delay: 0.6s; }
+  .team-card.visible .skill-item:nth-child(1) .skill-progress::after { animation-delay: 0.1s; }
+  .team-card.visible .skill-item:nth-child(2) .skill-progress::after { animation-delay: 0.2s; }
+  .team-card.visible .skill-item:nth-child(3) .skill-progress::after { animation-delay: 0.3s; }
+  .team-card.visible .skill-item:nth-child(4) .skill-progress::after { animation-delay: 0.4s; }
+  .team-card.visible .skill-item:nth-child(5) .skill-progress::after { animation-delay: 0.5s; }
+  .team-card.visible .skill-item:nth-child(6) .skill-progress::after { animation-delay: 0.6s; }
+  .team-card.visible .skill-progress::after {
+    animation-play-state: running;
+  }
+}

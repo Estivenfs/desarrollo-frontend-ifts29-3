@@ -385,3 +385,132 @@
 .team-carousel-3d-item .social-btn:hover {
   border-color: white; 
 }
+
+/* Fondo uniforme para pantallas medianas (tablet) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  #equipo .team-carousel-3d-item .team-card {
+    background: linear-gradient(135deg, rgba(0,0,0,0.92), rgba(30,30,30,0.88)) !important;
+  }
+  #equipo .team-carousel-3d-item.active .team-card {
+    background: linear-gradient(135deg, rgba(0,0,0,1), rgba(30,30,30,1)) !important;
+  }
+}
+
+/* Fondo uniforme para pantallas grandes (desktop) */
+@media (min-width: 1025px) {
+  #equipo .team-carousel-3d-item .team-card {
+    background: linear-gradient(135deg, rgba(0,0,0,0.92), rgba(30,30,30,0.88)) !important;
+  }
+  #equipo .team-carousel-3d-item.active .team-card {
+    background: linear-gradient(135deg, rgba(0,0,0,1), rgba(30,30,30,1)) !important;
+  }
+}
+.team-carousel-3d-item .team-card:hover .hover-scale-image {
+  transform: scale(1.03) !important; 
+}
+
+
+.team-carousel-3d-item .team-card:hover {
+  transform: translateY(-5px) !important; 
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+
+.team-carousel-3d-item .compact-content {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+
+.team-carousel-3d-item .compact-skills .skill-item {
+  margin-bottom: 8px !important;
+}
+
+.team-carousel-3d-item .compact-skills .skill-name {
+  font-size: 0.7rem !important;
+}
+
+.team-carousel-3d-item .compact-skills .skill-percentage {
+  font-size: 0.65rem !important;
+}
+
+.team-carousel-3d-item .compact-skills .skill-bar {
+  height: 6px !important;
+}
+
+
+.team-carousel-3d-item .compact-social .social-btn {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+/* .team-carousel-3d-item .compact-social .social-btn i {
+  font-size: 0.8rem !important;
+} */
+
+
+.team-carousel-3d-controls {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.team-carousel-3d-btn {
+  background: rgba(43, 42, 70, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  pointer-events: all;
+}
+
+.team-carousel-3d-btn:hover {
+  background: rgba(102, 126, 234, 0.9);
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.team-carousel-3d-indicators {
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 20;
+}
+
+.team-carousel-3d-indicators .team-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(43, 42, 70, 0.8);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.team-carousel-3d-indicators .team-indicator.active {
+  background: rgba(43, 42, 70, 0.8);
+  transform: scale(1.2);
+}
+
+.team-carousel-3d-indicators .team-indicator:hover {
+  background: rgba(43, 42, 70, 0.8);
+  transform: scale(1.1);
+}
