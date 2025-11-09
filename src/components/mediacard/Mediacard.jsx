@@ -1,5 +1,9 @@
 import React from 'react';
 
+const isTouchDevice = () => {
+  return typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+};
+
 const MediaCard = ({ 
   item, 
   type = 'movie', // 'movie' o 'music'
@@ -20,6 +24,8 @@ const MediaCard = ({
     enlace
   } = item;
 
+  const showOverlay = isTouchDevice();
+
   return (
     <div className={`card h-100 shadow-sm position-relative overflow-hidden ${className}`} 
          style={{ 
@@ -33,19 +39,19 @@ const MediaCard = ({
       <img 
         src={imagen} 
         alt={titulo} 
-        className="card-img-top h-100 object-fit-cover"
-        style={{ height: '250px', objectFit: 'cover' }}
+        className="card-img-top object-fit-cover"
+        style={{ height: 'auto', maxHeight: '250px', objectFit: 'cover' }}
       />
       
       {/* Overlay con información completa */}
       <div className="card-img-overlay d-flex flex-column justify-content-center align-items-center text-white text-center"
            style={{ 
              background: 'rgba(10, 10, 20, 0.9)',
-             opacity: 0,
+             opacity: showOverlay ? 1 : 0,
              transition: 'opacity 0.5s ease'
            }}
-           onMouseEnter={(e) => e.currentTarget.style.opacity = 1}
-           onMouseLeave={(e) => e.currentTarget.style.opacity = 0}>
+           onMouseEnter={(e) => { if (!showOverlay) e.currentTarget.style.opacity = 1; }}
+           onMouseLeave={(e) => { if (!showOverlay) e.currentTarget.style.opacity = 0; }}>
         
         <h5 className="card-title fw-bold text-danger mb-2">{titulo}</h5>
         

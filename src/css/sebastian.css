@@ -44,7 +44,7 @@
 
 /* Fondo específico para Sebastián */
 .sebastian-page {
-  background-image: url("/src/assets/sebastian-redes.jpg") !important;
+  background-image: url("../assets/sebastian-redes.jpg") !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background-attachment: fixed !important;
@@ -81,6 +81,13 @@
 
 /* Cards de películas y música */
 
+/* Ajustes específicos de las tarjetas de media en esta página */
+.sebastian-media-card .card-img-top {
+  height: 220px;
+}
+.sebastian-media-card {
+  min-height: 340px;
+}
 
 /* Fondo de secciones */
 .sebastian-fondo {
@@ -136,6 +143,18 @@
 }
 
 /* Responsive */
+@media (max-width: 992px) {
+  .sebastian-profile-card .card-body {
+    padding: 2rem !important;
+  }
+  .sebastian-section-title {
+    font-size: 1.3rem;
+  }
+  .sebastian-media-card .card-img-top {
+    height: 200px;
+  }
+}
+
 @media (max-width: 768px) {
   .sebastian-movie-card, .sebastian-music-card {
     height: 300px;
@@ -156,5 +175,57 @@
   
   .sebastian-profile-card{
     padding: 2rem !important;
+  }
+
+  /* Evitar fixed en móviles para mejor rendimiento */
+  .sebastian-page {
+    background-attachment: scroll !important;
+  }
+  /* Reducir márgenes pesados en móvil */
+  .sebastian-fondo {
+    margin: 1rem !important;
+    padding: 1rem !important;
+  }
+  /* Ajuste de tarjetas */
+  .sebastian-media-card .card-img-top {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sebastian-section-title {
+    font-size: 1.1rem;
+  }
+  .sebastian-profile-img {
+    width: 130px;
+    height: 130px;
+  }
+  .sebastian-media-card {
+    min-height: 300px;
+  }
+  .sebastian-media-card .card-img-top {
+    height: 160px;
+  }
+}
+
+@media (max-width: 576px) {
+  /* El contenedor ocupa todo el ancho sin padding lateral */
+  .sebastian-page .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  /* La tarjeta de perfil toma el 100% de ancho */
+  .sebastian-profile-card {
+    width: 100% !important;
+  }
+  /* Reducir padding de la sección superior para no achicar el contenido */
+  .sebastian-page section.p-5 {
+    padding: 1rem !important;
+  }
+  /* Ajustar padding interno de la tarjeta en móviles */
+  .sebastian-profile-card .card-body {
+    padding: 1.25rem !important;
   }
 }

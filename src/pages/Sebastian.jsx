@@ -6,6 +6,46 @@ import { usePageMetadata } from '../hooks/usePageMetadata';
 import peliculas from '../data/peliculas.json';
 import musica from '../data/musica.json';
 import favicon from '../assets/favicon.png';
+import sebastianPerfilImg from '../assets/sebastian-perfil.webp';
+import imgScorpion from '../assets/sebastian-scorpion1.jpg';
+import imgDontCry from '../assets/sebastian-dontcry.jpg';
+import imgCreep from '../assets/sebastian-creep.jpg';
+import imgNumb from '../assets/sebas-numb.jpg';
+import imgTerminator2 from '../assets/sebastian-terminator2.jpg';
+import imgBigShort from '../assets/sebastian-thebigshort1.jpg';
+import imgAjeoosi from '../assets/sebastian-ajeoosi2.jpg';
+import imgHackBoss from '../assets/sebastian-Como_Hackear_seu_Chefe3.jpg';
+
+const assetMap = {
+  'sebastian-scorpion1.jpg': imgScorpion,
+  'sebastian-dontcry.jpg': imgDontCry,
+  'sebastian-creep.jpg': imgCreep,
+  'sebas-numb.jpg': imgNumb,
+  'sebastian-terminator2.jpg': imgTerminator2,
+  'sebastian-thebigshort1.jpg': imgBigShort,
+  'sebastian-ajeoosi2.jpg': imgAjeoosi,
+  'sebastian-Como_Hackear_seu_Chefe3.jpg': imgHackBoss,
+};
+
+// Helper para resolver rutas de assets definidas como "/src/assets/..." en JSON
+const resolveAsset = (path) => {
+  try {
+    if (typeof path === 'string' && path.startsWith('/src/assets/')) {
+      const fileName = path.split('/src/assets/')[1];
+      if (assetMap[fileName]) return assetMap[fileName];
+      // Fallback genérico
+      const url = new URL(`../assets/${fileName}`, import.meta.url).href;
+      return url;
+    }
+    return path;
+  } catch (e) {
+    return path;
+  }
+};
+
+// Resolver imágenes de películas y música para funcionar en producción
+const peliculasResolved = peliculas.map((p) => ({ ...p, imagen: resolveAsset(p.imagen) }));
+const musicaResolved = musica.map((m) => ({ ...m, imagen: resolveAsset(m.imagen) }));
 
 const Sebastian = () => {
   usePageMetadata("Sebastián - Perfil", favicon);
@@ -40,7 +80,7 @@ const Sebastian = () => {
                   <div className="row align-items-center">
                     <div className="col-lg-5 text-center mb-4 mb-lg-0 ">
                       <img 
-                        src="/src/assets/sebastian-perfil.webp" 
+                        src={sebastianPerfilImg} 
                         alt="Sebastián" 
                         className="sebastian-profile-img mb-3" 
                         style={{
@@ -118,8 +158,8 @@ const Sebastian = () => {
             <i className="bi bi-film me-2"></i>Series y Películas Favoritas
           </h3>
           
-            <div className="row">
-            {peliculas.map(pelicula => (
+            <div className="row g-4">
+            {peliculasResolved.map(pelicula => (
               <div key={pelicula.id} className="col-12 col-md-6 col-xl-3">
                 <MediaCard 
                   item={pelicula} 
@@ -138,8 +178,8 @@ const Sebastian = () => {
           <h3 className="sebastian-section-title sebastian-text-primary">
             <i className="bi bi-music-note-beamed me-2"></i>Música Favorita
           </h3>
-           <div className="row">
-            {musica.map(cancion => (
+           <div className="row g-4">
+            {musicaResolved.map(cancion => (
               <div key={cancion.id} className="col-12 col-md-6 col-xl-3">
                 <MediaCard 
                   item={cancion} 
